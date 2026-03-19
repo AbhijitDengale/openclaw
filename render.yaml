@@ -3,7 +3,7 @@ services:
     name: openclaw
     runtime: image
     image:
-      url: ghcr.io/openclaw/openclaw:main-slim
+      url: ghcr.io/openclaw/openclaw:latest
     plan: standard
     healthCheckPath: /health
     envVars:
