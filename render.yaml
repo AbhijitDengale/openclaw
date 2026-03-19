@@ -19,7 +19,7 @@ services:
         value: /data/workspace
       - key: OPENCLAW_GATEWAY_TOKEN
         generateValue: true
-    dockerCommand: /bin/sh -c mkdir -p /data/.openclaw /home/node/.openclaw /data/workspace && ln -sfn /data/.openclaw /home/node/.openclaw && node openclaw.mjs onboard --non-interactive --mode local --auth-choice google-api-key --gemini-api-key "$GEMINI_API_KEY" --gateway-auth token --gateway-token "$OPENCLAW_GATEWAY_TOKEN" --skip-health --accept-risk && node openclaw.mjs config set gateway.bind lan && node openclaw.mjs config set gateway.controlUi.dangerouslyAllowHostHeaderOriginFallback true && node openclaw.mjs config set gateway.controlUi.allowInsecureAuth true && node openclaw.mjs config set gateway.controlUi.dangerouslyDisableDeviceAuth true && exec node openclaw.mjs gateway --port 18789
+    dockerCommand: /bin/sh -c mkdir -p /data/.openclaw /data/workspace && ln -sfn /data/.openclaw /home/node/.openclaw && exec node openclaw.mjs gateway --bind lan --port 18789 --allow-unconfigured
     disk:
       name: openclaw-data
       mountPath: /data
